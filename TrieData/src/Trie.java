@@ -1,3 +1,5 @@
+import java.io.*;
+
 // Java implementation of search and insert operations
 // on Trie
 public class Trie {
@@ -69,8 +71,7 @@ public class Trie {
     }
 
     // Driver
-    public static void main(String args[])
-    {
+    public static void main(String args[]) throws IOException {
         // Input keys (use only 'a' through 'z' and lower case)
         String keys[] = {"the", "a", "there", "answer", "any",
                 "by", "bye", "their"};
@@ -101,6 +102,14 @@ public class Trie {
         if(search("thaw") == true)
             System.out.println("thaw --- " + output[1]);
         else System.out.println("thaw --- " + output[0]);
+
+        try (BufferedReader br = new BufferedReader(new FileReader("sozluk.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // process the line.
+               insert(line);
+            }
+        }
 
     }
 }
